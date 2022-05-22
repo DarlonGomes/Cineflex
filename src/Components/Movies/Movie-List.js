@@ -35,7 +35,7 @@ const Info = styled.div`
 h3{
     font-family: 'Roboto';
     font-size: 24px;
-    font-weigth: 400;
+    font-weight: 400;
     color: #293845;
     margin: 40px
 }

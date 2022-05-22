@@ -2,8 +2,14 @@ import React from 'react';
 export default function Seats () {
     
     return (
-        <>
-        <h1> a </h1>
-        </>
+        <Page>
+            <h3> Selecione o(s) assento(s)</h3>
+            <SeatGrid>
+
+            </SeatGrid>
+            <SeatMenu>
+                
+            </SeatMenu>
+        </Page>
     )
 }

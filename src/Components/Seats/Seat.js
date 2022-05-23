@@ -1,11 +1,11 @@
 
 import styled from 'styled-components';
 import React from 'react';
-export default function Seat ({name, isAvailable, seatSelection}){
+export default function Seat ({id, name, isAvailable, seatSelection}){
     
     if(isAvailable === true){
         return (
-            <Available onClick={()=> seatSelection(name)}>
+            <Available onClick={()=> seatSelection(id, name)}>
                 <p>{name}</p>
             </Available>
         )

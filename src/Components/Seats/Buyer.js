@@ -1,16 +1,30 @@
 
 import styled from 'styled-components';
 import {useState} from 'react';
-import { useNavigate } from 'react-router-dom';
-export default function Buyer ({ ticket, choosenSeats }) {
+import {useNavigate } from 'react-router-dom';
+import axios from 'axios';
+export default function Buyer ({ seatId, choosenSeats }) {
+    
     const navigate = useNavigate();
     const [name, setName] = useState('');
     const [cpf, setCpf] = useState('');
+
+    const data = {
+        ids: seatId,
+        name: name,
+        cpf :cpf
+    }
+
+    const printData = {
+        assentos: choosenSeats,
+        name: name,
+        cpf :cpf
+    }
+
     function addBuyer(event, name, cpf) {
         event.preventDefault();
-        const newTicket = [...ticket, name, cpf]
-        console.log(newTicket, choosenSeats)
-        navigate( "/sucesso");
+        const promise = axios.post("https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many", data)
+        promise.then(response => navigate("/sucesso", {state: printData}));
     }
     return (
         <Page>
@@ -81,7 +95,7 @@ const Page = styled.div`
         font-size: 18px;
         font-weight: 400;
         color: #293845;
-        margin-bottom: 5px;
+        margin-bottom: 10px;
     }
 
     button {
@@ -94,5 +108,6 @@ const Page = styled.div`
         font-weight: 400;
         font-size: 18px;
         color: #FFFFFF;
+        margin-top: 30px;
     }
 `

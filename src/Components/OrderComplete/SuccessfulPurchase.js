@@ -1,7 +1,11 @@
 import styled from "styled-components"
-import { useNavigate } from "react-router-dom";
-export default function Success ({ticket,choosenSeats}){
+import { useNavigate, useLocation} from "react-router-dom";
+export default function Success ({setChoosenSeats, setSeatId}){
     const navigate = useNavigate();
+    const location = useLocation();
+    const data = location.state;
+   
+    console.log(data)
     return(
         <Page>
             <h3>Pedido feito <br/>
@@ -12,13 +16,18 @@ export default function Success ({ticket,choosenSeats}){
             </div>
             <div className="org">
                 <h4>Ingressos</h4>
-                <p></p>
+                {data.assentos.map((item)=> <p>Assento {item}</p>)}
             </div>
             <div className="org">
                 <h4>Comprador</h4>
-                {ticket.map(item => <p> {item} </p> )}
+                <p>Nome: {data.name}</p>
+                <p>CPF: {data.cpf}</p>
             </div>
-            <button onClick={()=> navigate("/")}>Voltar pra Home</button>
+            <button onClick={()=> {
+                setChoosenSeats([]);
+                setSeatId([]);
+                navigate("/")
+            } }>Voltar pra Home</button>
         </Page>
     )
     
@@ -47,6 +56,7 @@ const Page = styled.div`
         font-weight: 700;
         font-size: 24px;
         color: #293845;
+        margin-top: 20px;
         margin-bottom: 10px;
     }
 
@@ -55,7 +65,7 @@ const Page = styled.div`
         font-weight: 400;
         font-size: 22px;
         color: #293845;
-        margin-bottom: 25px;
+        margin-bottom: 10px;
     }
 
     button{

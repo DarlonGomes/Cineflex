@@ -6,7 +6,8 @@ import styled from 'styled-components'
 import SeatType from './SeatType';
 import Seat from './Seat';
 import Buyer from './Buyer';
-export default function Seats ({addBuyer, seatSelection, choosenSeats, ticket}) {
+import Footer from '../Footer';
+export default function Seats ({seatSelection, choosenSeats, seatId}) {
     const [seats, setSeats] = useState(null);
     const {idSessao} = useParams();
     
@@ -29,7 +30,8 @@ export default function Seats ({addBuyer, seatSelection, choosenSeats, ticket}) 
                 { seats.map(seat => <Seat key={seat.id} {...seat} seatSelection={seatSelection}/>)}
             </SeatGrid>
             <SeatType />
-            <Buyer addBuyer={addBuyer} choosenSeats={choosenSeats} ticket={ticket} />
+            <Buyer choosenSeats={choosenSeats} seatId={seatId}/>
+            <Footer/>
         </Page>
     )
 }

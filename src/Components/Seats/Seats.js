@@ -6,10 +6,10 @@ import styled from 'styled-components'
 import SeatType from './SeatType';
 import Seat from './Seat';
 import Buyer from './Buyer';
-export default function Seats ({addBuyer}) {
+export default function Seats ({addBuyer, seatSelection, choosenSeats, ticket}) {
     const [seats, setSeats] = useState(null);
     const {idSessao} = useParams();
-
+    
     useEffect(() => {
         const promise = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${idSessao}/seats`)
         promise.then(response => setSeats(response.data.seats))
@@ -26,10 +26,10 @@ export default function Seats ({addBuyer}) {
         <Page>
             <h3> Selecione o(s) assento(s)</h3>
             <SeatGrid>
-                { seats.map(seat => <Seat key={seat.id} {...seat} />)}
+                { seats.map(seat => <Seat key={seat.id} {...seat} seatSelection={seatSelection}/>)}
             </SeatGrid>
             <SeatType />
-            <Buyer addBuyer={addBuyer}/>
+            <Buyer addBuyer={addBuyer} choosenSeats={choosenSeats} ticket={ticket} />
         </Page>
     )
 }

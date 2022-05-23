@@ -1,9 +1,17 @@
 
 import styled from 'styled-components';
 import {useState} from 'react';
-export default function Buyer ({ addBuyer}) {
+import { useNavigate } from 'react-router-dom';
+export default function Buyer ({ ticket, choosenSeats }) {
+    const navigate = useNavigate();
     const [name, setName] = useState('');
     const [cpf, setCpf] = useState('');
+    function addBuyer(event, name, cpf) {
+        event.preventDefault();
+        const newTicket = [...ticket, name, cpf]
+        console.log(newTicket, choosenSeats)
+        navigate( "/sucesso");
+    }
     return (
         <Page>
 
@@ -23,9 +31,13 @@ export default function Buyer ({ addBuyer}) {
                 <div className='org'>
                     <h4>CPF do comprador:</h4>
                 <input
-                type="text"
+                type="tel"
+                id="cpf"
                 placeholder='Digite seu CPF...'
-                onChange={(e)=> setCpf(e.target.value)}
+                onChange={(e)=> setCpf(e.target.value
+                    .replace(/\D/g, "")
+                    .replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4")
+                    .substring(0, 14))}
                 value = {cpf}
                 required
                 ></input>

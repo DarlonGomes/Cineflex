@@ -1,23 +1,25 @@
-import styled from 'styled-components'
-import React from 'react'
-export default function Seat ({name, isAvailable}){
+
+import styled from 'styled-components';
+import React from 'react';
+export default function Seat ({name, isAvailable, seatSelection}){
+    
     if(isAvailable === true){
         return (
-            <Avaiable onClick="">
+            <Available onClick={()=> seatSelection(name)}>
                 <p>{name}</p>
-            </Avaiable>
+            </Available>
         )
     }
     
 
     return(
-        <Unavaiable>
+        <Unavailable onClick ={() => alert("Esse assento não está disponível.")}>
                 <p>{name}</p>
-            </Unavaiable>
+            </Unavailable>
     )
 }
 
-const Avaiable = styled.div`
+const Available = styled.div`
     width: 24px;
     height: 24px;
     background: #C3CFD9;
@@ -36,7 +38,7 @@ const Avaiable = styled.div`
     }
 `;
 
-const Unavaiable = styled.div`
+const Unavailable = styled.div`
     width: 24px;
     height: 24px;
     background: #FBE192;

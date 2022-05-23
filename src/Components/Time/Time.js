@@ -16,9 +16,13 @@ const Option = styled.div`
     background-color: #E8833A;
     border-radius: 3px;
     display: flex;
+    justify-content: center;
     align-items: center;
-    text-align: center;
     margin-right: 10px;
+    & :hover{
+        cursor: pointer;
+        opacity: 0.6;
+    }
     
     p{
         font-family: 'Roboto';

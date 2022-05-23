@@ -16,7 +16,7 @@ export default function Schedule (){
 
     if (movieTime === null){
         return (
-            <Page><h3> Carregando </h3></Page>
+            <Page><h3> Carregando... </h3></Page>
             
         )
     }

@@ -7,7 +7,7 @@ import SeatType from './SeatType';
 import Seat from './Seat';
 import Buyer from './Buyer';
 import Footer from '../Footer';
-export default function Seats ({seatSelection, choosenSeats, seatId}) {
+export default function Seats ({seatSelection, choosenSeats, seatId, movie, setMovie}) {
     const [seats, setSeats] = useState(null);
     const {idSessao} = useParams();
     

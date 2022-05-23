@@ -9,7 +9,7 @@ import Schedule from "./Time/Schedule";
 
 
 export default function App (){
-    const [movie, setMovie] = useState({});
+    const [movie, setMovie] = useState(null);
     const [choosenSeats, setChoosenSeats] = useState ([]);
     const [seatId, setSeatId] = useState([]);
     function seatSelection (id, name) {
@@ -27,7 +27,7 @@ export default function App (){
         <Routes>
         <Route path="/" element={<Movies/>} />
         <Route path ="/sessoes/:idFilme" element = {<Schedule setMovie={setMovie} movie={movie}/>} />
-        <Route path ="/assentos/:idSessao" element = {<Seats  seatSelection={seatSelection} choosenSeats={choosenSeats} seatId={seatId}/>} />
+        <Route path ="/assentos/:idSessao" element = {<Seats  seatSelection={seatSelection} choosenSeats={choosenSeats} seatId={seatId} movie={movie} setMovie={setMovie}/>} />
         <Route path="/sucesso" element = {<Success setChoosenSeats={setChoosenSeats} setSeatId={setSeatId}/> }/>  
         </Routes>
         </BrowserRouter>

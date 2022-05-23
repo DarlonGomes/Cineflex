@@ -6,15 +6,16 @@ import axios from 'axios';
 import Date from './Date';
 import Footer from '../Footer';
 
-export default function Schedule (){
+export default function Schedule ({setMovie, movie}){
     const [movieTime, setMovieTime] = useState(null);
     const {idFilme} = useParams();
     useEffect(() => {
         const promise = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/movies/${idFilme}/showtimes`)
-        promise.then(response => setMovieTime(response.data));
+        promise.then(response => setMovieTime(response.data)
+        );
     }, [idFilme]);
 
-
+    
     
     if (movieTime === null){
         return (
@@ -29,7 +30,7 @@ export default function Schedule (){
             <Lista>
                 { movieTime.days.map(day => <Date key={day.id}{...day}/>) }
             </Lista>
-            <Footer movieTime = {movieTime} idFilme={idFilme}/>
+            <Footer movieTime={movieTime} idFilme={idFilme}/>
         </Page>
     )
 }

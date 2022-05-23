@@ -17,14 +17,10 @@ export default function Footer ({movieTime, idFilme}) {
     ) 
     }
     
-    return (
-        <></>
-    )
-   
 }
 
 const Page = styled.div`
-    width: 375px;
+    width: 100%;
     height: 117px;
     position: fixed;
     right: 0px;

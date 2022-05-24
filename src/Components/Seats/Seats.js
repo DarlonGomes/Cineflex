@@ -31,7 +31,7 @@ export default function Seats ({seatSelection, choosenSeats, seatId, movie, setM
             </SeatGrid>
             <SeatType />
             <Buyer choosenSeats={choosenSeats} seatId={seatId}/>
-            <Footer/>
+            
         </Page>
     )
 }
